@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //components
 import CreateTodo from "./components/create_todo";
 import EditTodo from "./components/edit_todo";
-import TodosList from "./components/todos_list";
+import { TodosList } from "./components/todos_list";
 
 //logo
 import AtomLogo from "./img/atom.png";

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Spring, config } from "react-spring";
+
 import Like from "../img/like.png";
 import DisLike from "../img/dislike.png";
 
@@ -32,7 +34,7 @@ const Todo = ({
   );
 };
 
-export default class TodosList extends Component {
+class TodosList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,20 +58,28 @@ export default class TodosList extends Component {
   render = () => {
     return (
       <div>
-        <h3>Todos List</h3>
-        <table className="table table-striped" style={{ marginTop: 20 }}>
-          <thead>
-            <tr>
-              <th>Description</th>
-              <th>Responsible</th>
-              <th>Priority</th>
-              <th>Done/Not Done</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>{this.todoList()}</tbody>
-        </table>
+        <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} config={config.slow}>
+          {styles => (
+            <div style={styles}>
+              <h3>Todos List</h3>
+              <table className="table table-striped" style={{ marginTop: 20 }}>
+                <thead>
+                  <tr>
+                    <th>Description</th>
+                    <th>Responsible</th>
+                    <th>Priority</th>
+                    <th>Done/Not Done</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>{this.todoList()}</tbody>
+              </table>
+            </div>
+          )}
+        </Spring>
       </div>
     );
   };
 }
+
+export { Todo, TodosList };
